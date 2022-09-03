@@ -11,6 +11,7 @@ app = Dash(
 
 server = app.server
 
+
 @app.server.route("/assets/<path:path>")
 def static_file(path):
     static_folder = os.path.join(os.getcwd(), "assets")
