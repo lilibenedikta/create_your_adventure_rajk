@@ -67,6 +67,7 @@ layout = html.Div(
     [
         Output("situation", "children"),
         Output("option_selector", "options"),
+        Output("option_selector", "value"),
         Output("submit_gomb", "style"),
         Output("finish_gomb", "style"),
         Output("last_state", "data"),
@@ -128,6 +129,7 @@ def continue_game(
     return (
         next_text,
         next_radio,
+        1,
         submit_button_style,
         finish_button_style,
         sesh.current_state,

@@ -28,15 +28,7 @@ client = boto3.client(
     region_name=region_name,
 )
 
-RAJK_ZORK_edges_from_AWS_server = client.get_object(
-    Bucket=story_bucket, Key=edges
-)
-RAJK_ZORK_nodes_from_AWS_server = client.get_object(
-    Bucket=story_bucket, Key=nodes
-)
-edge_data = pd.read_csv(RAJK_ZORK_edges_from_AWS_server["Body"]).set_index(
-    "FROM"
-)
-node_data = pd.read_csv(RAJK_ZORK_nodes_from_AWS_server["Body"]).set_index(
-    "NODE_ID"
-)
+RAJK_ZORK_edges_from_AWS_server = client.get_object(Bucket=story_bucket, Key=edges)
+RAJK_ZORK_nodes_from_AWS_server = client.get_object(Bucket=story_bucket, Key=nodes)
+edge_data = pd.read_csv(RAJK_ZORK_edges_from_AWS_server["Body"]).set_index("FROM")
+node_data = pd.read_csv(RAJK_ZORK_nodes_from_AWS_server["Body"]).set_index("NODE_ID")
