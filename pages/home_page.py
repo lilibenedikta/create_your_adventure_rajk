@@ -18,13 +18,11 @@ layout = html.Div(
             Ha már rendelkezel mentéssel, akkor pedig folytasd ugyanonnan.",
             className="centre_text_secondary",
         ),
-        dcc.Input(
-            id="text_input_small", type="text", placeholder="Enter user ID"
-        ),
+        dcc.Input(id="text_input_small", type="text", placeholder="Enter user ID"),
         dbc.Button("Mehet!", id="start_gomb", className="centre_button"),
         dcc.Store(id="loaded_id"),
         dcc.Store(id="store_current_user_data"),
-        dcc.Store(id="store_current_user_id")
+        dcc.Store(id="store_current_user_id"),
     ]
 )
 
@@ -34,12 +32,9 @@ layout = html.Div(
         Output("start_gomb", "href"),
         Output("loaded_id", "data"),
         Output("store_current_user_data", "data"),
-        Output("store_current_user_id", "data")
+        Output("store_current_user_id", "data"),
     ],
-    [
-        Input("text_input_small", "value"),
-        Input("start_gomb", "n_clicks")
-    ]
+    [Input("text_input_small", "value"), Input("start_gomb", "n_clicks")],
 )
 def start_game(input_text, n_clicks):
     if input_text is None:
@@ -52,8 +47,7 @@ def start_game(input_text, n_clicks):
     try:
         client.head_object(Bucket=bucket, Key=user_id_to_be)
         current_user_data = pickle.loads(
-            client.get_object(Bucket=bucket, Key=user_id_to_be)
-            ["Body"].read()
+            client.get_object(Bucket=bucket, Key=user_id_to_be)["Body"].read()
         )
     except ClientError as e:
         error_code = int(e.response["Error"]["Code"])
@@ -65,26 +59,24 @@ def start_game(input_text, n_clicks):
                 "bika_nyuszi",
                 "szutykos_guru",
                 "naplopo_hajcsar",
-                "elszivott_cigik"
+                "elszivott_cigik",
             ]
             current_user_data_values = [user_id_to_be, "T_I_1", 0, 0, 0, 0, 0]
             current_user_data = {
-                k: v for k, v in zip(
-                    current_user_data_keys, current_user_data_values
-                )
+                k: v for k, v in zip(current_user_data_keys, current_user_data_values)
             }
 
     if current_user_data["current_state"] == "T_I_1":
         href = "/gameon"
         loaded_id = 1
     elif current_user_data["current_state"] in {
-        "T_II_1_jo", "T_II_1_kozepes", "T_II_1_rossz"
+        "T_II_1_jo",
+        "T_II_1_kozepes",
+        "T_II_1_rossz",
     }:
         href = "/chapter_two"
         loaded_id = 2
-    elif current_user_data["current_state"] in {
-        "T_III_1", "T_III_2"
-    }:
+    elif current_user_data["current_state"] in {"T_III_1", "T_III_2"}:
         href = "/chapter_three"
         loaded_id = 3
 
@@ -93,7 +85,7 @@ def start_game(input_text, n_clicks):
         client.put_object(
             Bucket=bucket,
             Key=current_user_data["user_id"],
-            Body=serialized_current_user_data
+            Body=serialized_current_user_data,
         )
 
     return href, loaded_id, current_user_data, current_user_data["user_id"]

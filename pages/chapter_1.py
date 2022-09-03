@@ -14,16 +14,13 @@ STATES = defaultdict(SessionState)
 layout = html.Div(
     children=[
         dcc.Markdown(id="situation", className="good_text"),
-        dcc.RadioItems(id="option_selector", className="good_radio",
-                       inline=False),
+        dcc.RadioItems(id="option_selector", className="good_radio", inline=False),
         dbc.Button("Tovább", id="submit_gomb", n_clicks=0),
         dbc.Button("Befejezés", id="finish_gomb", href="/finish"),
-        dbc.Button("2. fejezet", id="chapter_2_gomb",
-                   href="/chapter_two_divider"),
-        dbc.Button("3. fejezet", id="chapter_3_gomb",
-                   href="/chapter_three_divider"),
+        dbc.Button("2. fejezet", id="chapter_2_gomb", href="/chapter_two_divider"),
+        dbc.Button("3. fejezet", id="chapter_3_gomb", href="/chapter_three_divider"),
         dcc.Store(id="store_current_user_data_ch_1"),
-        dcc.Store(id="store_current_user_id")
+        dcc.Store(id="store_current_user_id"),
     ]
 )
 
@@ -36,19 +33,12 @@ layout = html.Div(
         Output("chapter_2_gomb", "style"),
         Output("chapter_3_gomb", "style"),
         Output("finish_gomb", "style"),
-        Output("store_current_user_data_ch_1", "data")
+        Output("store_current_user_data_ch_1", "data"),
     ],
     Input("submit_gomb", "n_clicks"),
-    [
-        State("option_selector", "value"),
-        State("store_current_user_id", "data")
-    ]
+    [State("option_selector", "value"), State("store_current_user_id", "data")],
 )
-def continue_game(
-    n_clicks,
-    selector_value,
-    current_user_id
-):
+def continue_game(n_clicks, selector_value, current_user_id):
     if n_clicks is None:
         raise PreventUpdate
 
@@ -78,7 +68,7 @@ def continue_game(
         "T_I_11111_422",
         "T_I_11112_2112",
         "T_I_11111_423",
-        "T_I_11111_421"
+        "T_I_11111_421",
     }:
         next_radio = []
         submit_button_style = {"visibility": "hidden"}
@@ -93,7 +83,7 @@ def continue_game(
             "bika_nyuszi",
             "szutykos_guru",
             "naplopo_hajcsar",
-            "elszivott_cigik"
+            "elszivott_cigik",
         ]
         current_user_data_values_ch_1 = [
             current_user_id,
@@ -102,13 +92,11 @@ def continue_game(
             sesh.bika_nyuszi,
             sesh.szutykos_guru,
             sesh.naplopo_hajcsar,
-            sesh.elszivott_cigik
+            sesh.elszivott_cigik,
         ]
         current_user_data_ch_1 = {
             k: v
-            for k, v in zip(
-                current_user_data_keys_ch_1, current_user_data_values_ch_1
-            )
+            for k, v in zip(current_user_data_keys_ch_1, current_user_data_values_ch_1)
         }
 
     else:
@@ -127,5 +115,5 @@ def continue_game(
         chapter_2_gomb,
         chapter_3_gomb,
         finish_button_style,
-        current_user_data_ch_1
+        current_user_data_ch_1,
     )

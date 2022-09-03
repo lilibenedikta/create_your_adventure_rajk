@@ -14,17 +14,11 @@ layout = html.Div(
         html.Link(href="/assets/style.css", rel="stylesheet"),
         html.H1(
             "Gratulálunk, véget ért számodra a kaland!",
-            className="centre_text_main_finish"
+            className="centre_text_main_finish",
         ),
         html.H1("A statisztikáid:", className="centre_text_secondary_finish"),
-        html.H1(
-            "Önző Geci - People Pleaser",
-            className="centre_graph_title_left_1st"
-        ),
-        html.H1(
-            "Falu Bikája - Nyuszimuszi",
-            className="centre_graph_title_1st"
-        ),
+        html.H1("Önző Geci - People Pleaser", className="centre_graph_title_left_1st"),
+        html.H1("Falu Bikája - Nyuszimuszi", className="centre_graph_title_1st"),
         html.H1(
             "Kaland alatt elszívott cigeratták",
             className="centre_graph_title_right_1st",
@@ -39,15 +33,11 @@ layout = html.Div(
         ),
         dcc.Graph(id="graph_onzo_pleaser", className="centre_graph_left_1st"),
         dcc.Graph(id="graph_bika_nyuszi", className="centre_graph_1st"),
-        dcc.Graph(
-            id="graph_elszivott_cigik",
-            className="centre_graph_right_1st"
-        ),
+        dcc.Graph(id="graph_elszivott_cigik", className="centre_graph_right_1st"),
         dcc.Graph(id="graph_szutykos_guru", className="centre_graph_left_2nd"),
         dcc.Graph(id="graph_naplopo_hajcsar", className="centre_graph_2nd"),
         dbc.Button(
-            "Újrakezdem!", id="ujra", href="/",
-            className="centre_button_right_2nd"
+            "Újrakezdem!", id="ujra", href="/", className="centre_button_right_2nd"
         ),
         dcc.Store(id="store_current_user_data_ch_3"),
     ]
