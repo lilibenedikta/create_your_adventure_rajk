@@ -1,4 +1,4 @@
-![alt text](https://github.com/lilibenedikta/create_your_adventure_rajk/blob/main/docu_image.png?raw=true)
+![alt text](https://github.com/lilibenedikta/create_your_adventure_rajk/blob/update_markdown/docu_image.png?raw=true)
 
 # Sose lesz vége!
 
