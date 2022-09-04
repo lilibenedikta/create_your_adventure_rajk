@@ -51,12 +51,6 @@ layout = html.Div(
             id="store_current_user_id",
         ),
         dcc.Store(
-            id="last_user_id",
-        ),
-        dcc.Store(
-            id="last_state",
-        ),
-        dcc.Store(
             id="store_current_state",
         ),
     ]
@@ -70,7 +64,6 @@ layout = html.Div(
         Output("option_selector", "value"),
         Output("submit_gomb", "style"),
         Output("finish_gomb", "style"),
-        Output("last_state", "data"),
     ],
     [
         Input("submit_gomb", "n_clicks"),
@@ -132,5 +125,4 @@ def continue_game(
         1,
         submit_button_style,
         finish_button_style,
-        sesh.current_state,
     )

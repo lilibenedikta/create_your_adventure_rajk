@@ -67,7 +67,9 @@ def start_game(input_text, n_clicks):
     try:
         client.head_object(Bucket=saves_bucket, Key=user_id_to_be)
         current_user_data = pickle.loads(
-            client.get_object(Bucket=saves_bucket, Key=user_id_to_be)["Body"].read()
+            client.get_object(Bucket=saves_bucket, Key=user_id_to_be)[
+                "Body"
+            ].read()
         )
     except ClientError as e:
         error_code = int(e.response["Error"]["Code"])
