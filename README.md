@@ -1,4 +1,3 @@
-![alt text](https://github.com/lilibenedikta/create_your_adventure_rajk/blob/update_markdown/docu_image.png?raw=true)
 
 # Create your adventure!
 ### Dokumentáció a saját szöveg alapú kalandjátékod létrehozásához
