@@ -27,15 +27,15 @@ A spreadsheetben találsz néhány beépített függvényt (zöld oszlopok feket
 Egy szabály nincs befüggvényezve, ami az, hogy minden node csak egyszer fordulhat elő a történetben, tehát nem lehetnek loopok, máshogy fogalmazva egy játék során minden megtörtént helyzet ID-ja egyedi.
 
 
-Az utolsó állomásnál érdemes a “TO” node-nak a “VÉGE” nevet adni. Az utolsó “FROM” node-okat pedig lista formában be kell majd illeszteni a kódba - erre második pontban visszatérünk.
+Az utolsó állomásnál érdemes a “TEXT_E” oszlopba beírni, hogy “VÉGE”. Az utolsó “FROM” node-okat pedig lista formában be kell majd illeszteni a kódba - erre második pontban visszatérünk.
 
 
 A történetedet mindenképp ebben a formátumban írd meg, és másold le, illetve használd bátran ellenőrzésre ezt a Google Sheetet. Amikor csv formátumban exportálod az adatot, figyelj rá, hogy az ellenőrző függvények oszlopai már ne legyenek benne. 
 
 
 Az első pont végén két .csv fájlod lesz - ebben a dokumentációban így hívják ezeket: 
-RAJK_ZORK_edges.csv
-RAJK_ZORK_nodes.csv
+- RAJK_ZORK_edges.csv
+- RAJK_ZORK_nodes.csv
 
 
 ## GitHub Repository
