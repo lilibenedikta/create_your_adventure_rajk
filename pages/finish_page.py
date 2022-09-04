@@ -11,6 +11,11 @@ layout = html.Div(
             "Gratulálunk, sikeresen végigvitted a kalandot!",
             className="centre_text_main_finish",
         ),
-        dbc.Button("Újrakezdem!", id="ujra", href="/", className="centre_button"),
+        dbc.Button(
+            "Újrakezdem!",
+            id="ujra",
+            href="/",
+            className="centre_button",
+        ),
     ]
 )

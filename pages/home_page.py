@@ -1,7 +1,7 @@
 from dash import dcc, html, callback
 from dash.dependencies import Input, Output
 from botocore.exceptions import ClientError
-from authentication import client, saves_bucket, initial_state
+from authentication_and_parameters import client, saves_bucket, initial_state
 import dash_bootstrap_components as dbc
 import dash
 import pickle
@@ -67,7 +67,9 @@ def start_game(input_text, n_clicks):
     try:
         client.head_object(Bucket=saves_bucket, Key=user_id_to_be)
         current_user_data = pickle.loads(
-            client.get_object(Bucket=saves_bucket, Key=user_id_to_be)["Body"].read()
+            client.get_object(Bucket=saves_bucket, Key=user_id_to_be)[
+                "Body"
+            ].read()
         )
     except ClientError as e:
         error_code = int(e.response["Error"]["Code"])
