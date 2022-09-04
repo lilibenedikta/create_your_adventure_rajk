@@ -77,7 +77,7 @@ Miután sikerült klónolnod a repositoryt, **néhány dolgot módosítani kell 
 
 ## AWS szerver fiók
 
-Szükséged lesz egy **AWS fiókra**, ahol egy [S3 bucket nevű eszközt](https://towardsdatascience.com/how-to-upload-and-download-files-from-aws-s3-using-python-2022-4c9b787b15f2) fogsz tárolásra használni.** Ide kell feltölteni az első pontban letöltött .csv fájlokat**, és a játék itt fogja követni az egyedi felhasználók játék folyamatait, tehát a mentésben és a párhuzamos játékban is fontos szerepe van.
+Szükséged lesz egy **AWS fiókra**, ahol egy [S3 bucket nevű eszközt](https://towardsdatascience.com/how-to-upload-and-download-files-from-aws-s3-using-python-2022-4c9b787b15f2) fogsz tárolásra használni. **Ide kell feltölteni az első pontban letöltött .csv fájlokat**, és a játék itt fogja követni az egyedi felhasználók játék folyamatait, tehát a mentésben és a párhuzamos játékban is fontos szerepe van.
 
 Itt generálni kell egy ún. secret access key-t, ami a szerverre való belépéshez szükséges azonosításhoz kell. Sarkalatos pontja a folyamatnak a bucket-hoz tartozó titkos azonosítók tárolása. Főbűn kategóriába tartozik, ha ezeket az azonosítókat úgy tárolod, hogy valaki meg tudja találni a GitHubon, úgyhogy ennek kikerüléséhez ún. environment variable-eket fogsz létrehozni virtuális környezet segítségével. Hogy ezt valahogy meg tudd találni, érdemes elmenteni egy .txt fájlba a gépeden. 
 Két bucket-ra lesz szükség, az egyikbe a .csv fájlokat kell feltölteni, a másikba pedig a párhuzamos játékhoz szükséges user session-ök adatai fognak kerülni.
