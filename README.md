@@ -34,7 +34,7 @@ A játék struktúrája reprezentálható hálózatként, ahol a csomópontok a 
 A spreadsheetben találsz néhány beépített függvényt (zöld oszlopok fekete betűvel). Ezeknek **mindenhol OK-t kell mutatniuk**, különben a játékod hibára fog jutni. Ha mégis hibára fut valamelyik, akkor a hibaüzenetből tudsz következtetni a hiba okára.
 
 
-Egy szabály nincs befüggvényezve, ami az, hogy minden node csak egyszer fordulhat elő a történetben, tehát **nem lehetnek loopok**. Máshogy fogalmazva **egy játék során minden megtörtént helyzet ID-ja egyedi**.
+Egy szabály nincs befüggvényezve, ami az, hogy minden node csak egyszer fordulhat elő a történetben, tehát nem lehetnek körök. Máshogy megfogalmazva ha elindulsz egy csúcsból, az (irányított) éleken keresztül nem tudsz visszajutni abba a csúcsba (nincs benne kör).
 
 
 A problémamentes futtatáshoz fontos továbbá, hogy az utolsó szituációnál, a finish page előtti utolsó állomásodnál is meg kell adnod választási lehetőségeket, a választási lehetőségeket tartalmazó file-ban. A jelen repóban lévő segédadatbázis szemlélteti ezt a kitételt. Ennél az állomásnál érdemes a “TEXT_E” oszlopba beírni, hogy “VÉGE”. Az utolsó “FROM” node-okat pedig lista formában be kell majd illeszteni a kódba - erre második pontban visszatérünk.
