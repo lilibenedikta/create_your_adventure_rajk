@@ -1,7 +1,7 @@
 from dash import dcc, html, callback
 from dash.dependencies import Input, Output
 from botocore.exceptions import ClientError
-from authentication import client, saves_bucket, initial_state
+from authentication_and_parameters import client, saves_bucket, initial_state
 import dash_bootstrap_components as dbc
 import dash
 import pickle

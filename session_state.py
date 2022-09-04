@@ -1,4 +1,9 @@
-from authentication import client, story_bucket, edges, initial_state
+from authentication_and_parameters import (
+    client,
+    story_bucket,
+    edges,
+    initial_state,
+)
 import pandas as pd
 
 RAJK_ZORK_edges_from_AWS_server = client.get_object(

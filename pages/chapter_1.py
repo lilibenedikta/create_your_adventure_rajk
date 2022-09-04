@@ -3,7 +3,7 @@ from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 from collections import defaultdict
 from session_state import SessionState
-from authentication import (
+from authentication_and_parameters import (
     client,
     edge_data,
     node_data,
