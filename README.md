@@ -1,31 +1,99 @@
 ![alt text](https://github.com/lilibenedikta/create_your_adventure_rajk/blob/update_markdown/docu_image.png?raw=true)
 
-# Sose lesz vége!
+# Create your adventure!
+### Dokumentáció a saját szöveg alapú kalandjátékod létrehozásához
+### Kofrán Dániel, Nádasy Lili 
 
-## Projekt Disclaimer
+Az alábbi dokumentáció egy szöveg alapú kalandjáték létrehozásához szükséges lépéseket tartalmazza. Ha végigcsinálod, a játékod a következő dolgokra lesz képes: 
+- végig lehet játszani az általad írt, bármennyi szituációt és döntést tartalmazó kalandot
+- böngészőn keresztül, PC-n játszható
+- párhuzamosan több ember is tud vele játszani
+- játék közben el lehet menteni az aktuális helyzetet, kilépni, és később onnan folytatni 
 
-A ***Sose lesz vége!*** egy félév végi projekt, melyet a Rajk Szakkollégium Alkalmazott Adatközpontú Algoritmus Tervezés kurzusára készített Nádasy Lili és Kofrán Dani, 2022 tavaszán. A projektet nyáron egy feltételes formájában tovább dolgozta és kiegészítette a szerzőpáros.
 
-## Mi is maga a ***Sose lesz vége!***?
+## Történetírás, adatok
 
-A projekt egy szöveg-alapú kalandjátékot takar, melyben te dönthetsz a saját sorsod, a történet alakulása felől. A játék egy rajkos nyári tábori kalandot ölel fel, mely során 3 fejezeten keresztül élheted át az év egyik legkellemesebb időszakát. Küzdj meg a lejutás bonyodalmaival, éld át az önmarcangolás morális dilemmáit, majd tölts el egy különleges napot a nyári táborban. Mindeközben ne feledd, minden döntésed befolyással bír a későbbi történésekre, úgyhogy csak óvatosan!
 
-## A játék célja
+A kaland játékod alapja egy szöveges adatbázis lesz, amit te hozhatsz létre.
 
-A játék során az a célod, hogy minél jobb élményekkel zárdd az adott napot, valamint az egész nyári tábort. Mindez furfangos észjárást, illetve alkalmanként egy kis szerencsét igényel, valamint hogy tipikus rajkos szituációkban jól tudd magad elkalaúzolni. Neked mit jelent vajon majd a tábortűz?
+A játék struktúrája reprezentálható hálózatként, ahol a csomópontok a döntési helyzetek, az élek pedig a választási lehetőségek.
 
-## A játék működése
-
-A játék elején meg kell adnod egy egyedi azonosítót, mellyel a játék asszociálni fogja a játékmenetedet. Ezután fejezetekre bontva találkozol a bonyodalommal, melyet minden döntési pontban egy szituáció, illetve különböző döntési lehetőségek jelölnek.  Ha kiválasztottad az adott szituációban a döntésedet, a *Tovább* gombbal tudod tovább szőni a saját egyedi kalandodat. A játékmenetedet el tudod menteni a fejezetek között, melyet később bármikor folytathatsz az egyedi azonosítód beírásával.
-
-A játék során a döntéseid kihatnak a játékmenet alatt kimutatkozó személyiség jegyeidre, skilljeidre is. Minden döntés szoros összefüggésben van az öncentrikusságoddal, az asszertivitásoddal, az választott életmódod egészségességével, vagy a kollégiumi pályáddal. A játék végén betekintést kaphatsz abba, hogy ezen döntések milyen képet festenek rólad a mindent látó, de senkit sem bíráló algoritmus előtt.
-
-## Utószó
-
-Lilivel szerettünk volna egy kellemes élményt nyújtó kis játékot összehozni, mely készítése során több szinten feszegethettük a porgramozó tudásunkat. A szituációktól a játékmechanikákon keresztül mindent mi találtunk ki és fejlesztettünk le. Vannak részek melyek jobban, vagy épp kevésbé jól sikerültek, de reméljük minden játékos talál benne magának élvezetet. Ha van bármi kérdésetek / meglátásotok a játékkal kapcsolatban, keressetek minket bátran, addig is, mindenkinek jó szórakozást kívánunk!
-
-Kalandra fel!
+Ezen a linken találod a példa játékot, ami segít neked, hogy hiba nélkül megadd a szituációkat (nodes) és a választási lehetőségeket (edges), amelyek felépítik a játékot.
 
 
 
- 
+A spreadsheetben találsz néhány beépített függvényt (zöld oszlopok fekete betűvel). Ezeknek mindenhol OK-t kell mutatniuk, különben a játékod hibára fog jutni. Ha mégis hibára fut valamelyik, akkor a hibaüzenetből tudsz következtetni a hiba okára.
+
+
+Egy szabály nincs befüggvényezve, ami az, hogy minden node csak egyszer fordulhat elő a történetben, tehát nem lehetnek loopok, máshogy fogalmazva egy játék során minden megtörtént helyzet ID-ja egyedi.
+
+
+Az utolsó állomásnál érdemes a “TO” node-nak a “VÉGE” nevet adni. Az utolsó “FROM” node-okat pedig lista formában be kell majd illeszteni a kódba - erre második pontban visszatérünk.
+
+
+A történetedet mindenképp ebben a formátumban írd meg, és másold le, illetve használd bátran ellenőrzésre ezt a Google Sheetet. Amikor csv formátumban exportálod az adatot, figyelj rá, hogy az ellenőrző függvények oszlopai már ne legyenek benne. 
+
+
+Az első pont végén két .csv fájlod lesz - ebben a dokumentációban így hívják ezeket: 
+RAJK_ZORK_edges.csv
+RAJK_ZORK_nodes.csv
+
+
+## GitHub Repository
+
+
+A kreatív írói energiák kiélése után jöhet a kód összerakása. Ehhez a kiindulópontot a create_your_adventure_rajk GitHub repository adja. 
+
+Az első lépés ennek a repositorynak a klónolása, amihez itt találsz egy hasznos leírást, ha kell egy kis segítség.
+
+Röviden összefoglalva a tartalmukat, a következő fájlokat találod a repository-ban: 
+
+- assets/style.css - az app-ban található dash elemek formázási adatai, beállításai
+- pages/home_page.py - a nyitóoldal dash kódja
+- pages/chapter_1.py - a fejezeted dash kódja
+- pages/finish_page.py - a zárólap kódja
+- .gitignore - az itt szereplő fájlokat figyelmen kívül hagyja a verziókövető rendszer
+- Procfile - a Herokun való deployment-hez szükséges fájl
+- README.md - a repository leírása
+- app.py - ennek futtatásával indul el az app
+- authentication.py - az AWS serverrel való kommunikációhoz szükséges és játékspecifikus paramétereket tartalmazó kód
+- requirements.txt - szükséges packagek
+- runtime.txt - a szükséges python verzió nevét tartalmazza
+- session_state.py - a játék aktuális státuszának követéséhez kell
+
+Miután sikerült klónolnod a repositoryt, néhány dolgot módosítani kell a kódban, hogy az működjön a te történeteddel. Ezeket a módosítandó dolgokat az authentication.py fájlban találod, és az alábbi kép ismerteti őket.
+
+![alt text](https://github.com/lilibenedikta/create_your_adventure_rajk/blob/update_markdown/docu_image.png?raw=true)
+
+## Heroku fiók
+
+
+Egy Heroku fiókra mindenképpen szükséged lesz, ha még nem rendelkezel vele, ilyet itt tudsz létrehozni. A Heroku egy felhőplatform, amely több programozási nyelvet is támogat. Herokut modern alkalmazások telepítésére, kezelésére és skálázására használják. 
+Más megfogalmazásban ahhoz kell, hogy az appot ne csak lokálisan lehessen elérni, hanem egy linken keresztül bárhonnan, szóval nagyon egyszerűen meg tudod majd osztani a játékodat másokkal. 
+
+## AWS szerver fiók
+
+Szükséged lesz egy AWS fiókra is, ahol egy S3 bucket nevű eszközt fogsz tárolásra használni. Ide kell feltölteni az első pontban letöltött .csv fájlokat, és a játék itt fogja követni az egyedi felhasználók játék folyamatait, tehát a mentésben és a párhuzamos játékban is fontos szerepe van.
+
+Itt generálni kell egy ún. secret access key-t, ami a szerverre való belépéshez szükséges azonosításhoz kell. Sarkalatos pontja a folyamatnak a bucket-hoz tartozó titkos azonosítók tárolása. Főbűn kategóriába tartozik, ha ezeket az azonosítókat úgy tárolod, hogy valaki meg tudja találni a GitHubon, úgyhogy ennek kikerüléséhez ún. environment variable-eket fogsz létrehozni virtuális környezet segítségével. Hogy ezt valahogy meg tudd találni, érdemes elmenteni egy .txt fájlba a gépeden. 
+Két bucket-ra lesz szükség, az egyikbe a .csv fájlokat kell feltölteni, a másikba pedig a párhuzamos játékhoz szükséges user session-ök adatai fognak kerülni.
+
+
+## Environment variables, deployment
+
+Az app deployment a Heroku CLI segítségével történik. Szükséged lesz python-3.10.-es (virtuális) környezetre, hogy hozzá tudj férni a heroku fiókodhoz a command line-on keresztül. Ennek létrehozásának egy (és ajánlott) módja az Anaconda, és azon belül az Anaconda Prompt használata. 
+Ha mindez sikerült, a következő parancsokat kell beírni a command promptba amit használsz (itt Anaconda Promptba), mielőtt kalandra lehet kelni:
+
+- conda env list → milyen környezetek elérhetők? (ez a parancs csak a tájékozódáshoz szükséges)
+- cd path/a/klónolt/GitHub/repohoz → elnavigálás a repository mappájába
+- conda activate heroku → belépés a heroku környezetbe
+- heroku login → átirányít a böngészőbe, belépés a fiókba
+- heroku create az-appod-neve → létrehozza az applikációt, itt fogod látni a linket hozzá
+- heroku config:set AWS_ACCESS_KEY_ID=érték → megadod a secret key azonosítóját
+- heroku config:set AWS_SECRET_ACCESS_KEY=érték → megadod a secret key értékét
+- git push heroku main → updateled a main branchet a heroku által létrehozott új repository-n (ezt bármilyen változtatás után meg kell csinálni)
+- heroku open → megnyitod az applikációt
+- (heroku logs --tail → ha valamilyen okból Application Errort kapsz, így tudod megnézni a hibaüzenetet)
+
+# Gratulálunk, kész is vagy!
+
